@@ -1,0 +1,43 @@
+Paper: (https://ieeexplore.ieee.org/abstract/document/9926341)
+
+Hardware:
+Number of SMs: 108
+Number of SIMT units (FP32 MAC) in each SM: 64 (sparse kernels cannot run on tensor cores)
+Frequency: 1.41 GHz
+Compute throughput: 108x64x2x1.41 = 19491.84 GFLOPS = 19.49184 TFLOPS (FP32)
+
+Workload 1:
+Computation: SpMV (one iteration of PangeRank)
+Data type: FP32, 4B
+Operation: A (1073741824 x 1) = B (1073741824 x 268435456) X C (268435456 x 1)
+Density: A: 100% (dense); B: 7.45058059692383e-07% dense (sparse); C: 100% (dense)
+Achieved TFLOPS utilization: 0.0749567302707545%
+
+Workload 2:
+Computation: SpMV (one iteration of PangeRank)
+Data type: FP32, 4B
+Operation: A (2147483648 x 1) = B (2147483648 x 268435456) X C (268435456 x 1)
+Density: A: 100% (dense); B: 3.72529029846191e-07% dense (sparse); C: 100% (dense)
+Achieved TFLOPS utilization: 0.0640607644669857%
+
+Workload 3:
+Computation: SpMV (one iteration of PangeRank)
+Data type: FP32, 4B
+Operation: A (2147483648 x 1) = B (2147483648 x 536870912) X C (536870912 x 1)
+Density: A: 100% (dense); B: 1.86264514923096e-07% dense (sparse); C: 100% (dense)
+Achieved TFLOPS utilization: 0.0643834887212274%
+
+Workload 4:
+Computation: SpMV (one iteration of PangeRank)
+Data type: FP32, 4B
+Operation: A (4294967296 x 1) = B (4294967296 x 536870912) X C (536870912 x 1)
+Density: A: 100% (dense); B: 9.31322574615479e-8% dense (sparse); C: 100% (dense)
+Achieved TFLOPS utilization: 0.0531398025412210%
+
+Workload 5:
+Computation: SpMV (one iteration of PangeRank)
+Data type: FP32, 4B
+Operation: A (4294967296 x 1) = B (4294967296 x 1073741824) X C (1073741824 x 1)
+Density: A: 100% (dense); B: 4.65661287307739e-8% dense (sparse); C: 100% (dense)
+Achieved TFLOPS utilization: 0.0527015361285099%
+	
